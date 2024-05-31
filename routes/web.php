@@ -17,6 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin', function () {
+    return view('layouts.admin');
+});
+
+Route::get('/admin/produk', function () {
+    return view('admin.product');})->name('admin.produk');
+
+Route::get('/admin/pesanan', function () {
+    return view('admin.order');})->name('admin.order');
+
 Route::get('/register', function () {
     return view('pages.register');
 });
@@ -24,4 +34,5 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('pages.login');
 });
+
 
