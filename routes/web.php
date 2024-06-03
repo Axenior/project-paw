@@ -13,6 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/homepage', function(){
+    return view('pages.app.homepage');
+});
+
+Route::get('/smartphone', function(){
+    return view('pages.app.product.index',[
+        'product' => 'Smartphone'
+    ]);
+});
+
+Route::get('/laptop', function(){
+    return view('pages.app.product.index',[
+        'product' => 'Laptop'
+    ]);
+});
+
+Route::get('/tablet', function(){
+    return view('pages.app.product.index',[
+        'product' => 'Tablet'
+    ]);
 });

@@ -1,0 +1,144 @@
+.form-control:focus {
+  border-color: none;
+  box-shadow: none;
+}
+
+#carousel{
+  height: 350px;
+}
+
+.carousel-item img {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.product{
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.dc-none{
+  text-decoration: none;
+}
+
+
+@media (max-width: 576px) {
+  #carousel{
+    height: 300px;
+  }
+
+  .btn{
+    font-size: 12px;
+  }
+
+  #product{
+    height: 150px;
+  }
+}
+
+/* CUSTOM FONT SIZE MOBILE */
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2rem; /* 32px */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* 24px */
+  }
+  
+  h4{
+    font-size: 1.25rem; /* 24px */
+  }
+
+  h5{
+    font-size: 1rem; /* 24px */
+  }
+
+  p {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* CUSTOM BACKGROUND COLOR */
+.bg-midnight-blue{
+  background-color: #27374D;
+}
+
+.bg-steel-blue{
+  background-color: #526D82;
+}
+
+.bg-light-steel-blue{
+  background-color: #9DB2BF;
+}
+
+.bg-light-blue{
+  background-color: #DDE6ED;
+}
+
+/* CUSTOM FONT COLOR */
+.midnight-blue{
+  color: #27374D;
+}
+
+.steel-blue{
+  color: #526D82;
+}
+
+.light-steel-blue{
+  color: #9DB2BF;
+}
+
+.light-blue{
+  color: #DDE6ED;
+}
+
+/* Gradient Background */
+.bg-cucumber-water{
+  background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+}
+
+.bg-sea-salt{
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}
+
+.bg-vital-ocean{
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+}
+
+.bg-aqua-spray{
+  background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+}
+
+.bg-sea-salt-active{
+  box-shadow: 0 0 20px rgba(75, 108, 183, 0.7), 0 0 40px rgba(24, 40, 72, 0.7);
+}
+
+.bg-vital-ocean-active{
+  box-shadow: 0 0 20px rgba(28, 181, 224, 0.7), 0 0 40px rgba(0, 8, 81, 0.7);
+}
+
+.bg-aqua-spray-active {
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.7), 0 0 40px rgba(58, 71, 213, 0.7);
+}
+
+.bg-sea-salt:hover{
+  box-shadow: 0 0 20px rgba(75, 108, 183, 0.7), 0 0 40px rgba(24, 40, 72, 0.7);
+}
+
+.bg-vital-ocean:hover{
+  box-shadow: 0 0 20px rgba(28, 181, 224, 0.7), 0 0 40px rgba(0, 8, 81, 0.7);
+}
+
+.bg-aqua-spray:hover {
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.7), 0 0 40px rgba(58, 71, 213, 0.7);
+}
