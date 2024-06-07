@@ -8,58 +8,15 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #27374D;">
-        <div class="container">
-            <a class="navbar-brand" href="/admin" style="color: white;">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
-                            Admin 
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @include('partials.admin.navbar')
 
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-lg-2 p-0">
-                <div class="d-flex flex-column p-3 bg-light shadow min-vh-100 collapse show" style="height:100%;">
-                    <a href="/admin" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                        <span class="fs-4">Admin Panel</span>
-                    </a>
-                    <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item">
-                            <a href="/admin" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/admin/produk" class="nav-link {{ request()->is('admin/produk*') ? 'active' : '' }}">
-                                Produk
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/admin/pesanan" class="nav-link {{ request()->is('admin/pesanan*') ? 'active' : '' }}">
-                                Pesanan
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="col-auto col-md-3 col-lg-2 p-0 d-none d-lg-block">
+                @include('partials.admin.sidebar')
             </div>
-            <div class="col p-3">
-                <div class="p-3">
+            <div class="col mt-2">
+                <div class="">
                     @yield('content')
                 </div>
             </div>

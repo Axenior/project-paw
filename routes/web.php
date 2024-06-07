@@ -19,8 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-=======
 Route::get('/homepage', function(){
     return view('pages.app.homepage');
 });
@@ -60,17 +58,17 @@ Route::get('/cart/edit', function(){
 });
 
 Route::get('/admin', function () {
-    return view('admin.home');
+    return view('pages.admin.dashboard');
 });
 
 Route::get('/admin/produk/', function () {
-    return view('admin.product.index');})->name('admin.product');
+    return view('pages.admin.product.index');})->name('admin.product');
 
 Route::get('/admin/produk/create', function () {
-    return view('admin.product.create');})->name('admin.product');
+    return view('pages.admin.product.create');})->name('admin.product');
 
 Route::get('/admin/pesanan', function () {
-    return view('admin.order');})->name('admin.order');
+    return view('pages.admin.order.index');})->name('admin.order');
 
 Route::get('/register', function () {
     return view('pages.register');
