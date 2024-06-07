@@ -40,6 +40,21 @@ Route::get('/tablet', function(){
     ]);
 });
 
+Route::get('/detail', function(){
+    return view('pages.app.product.show');
+});
+
+Route::get('/checkout', function(){
+    return view('pages.app.product.checkout');
+});
+
+Route::get('/cart', function(){
+    return view('pages.app.cart.index');
+});
+
+Route::get('/cart/edit', function(){
+    return view('pages.app.cart.edit');
+});
 
 Route::get('/admin', function () {
     return view('layouts.admin');
