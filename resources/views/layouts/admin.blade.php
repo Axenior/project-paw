@@ -32,9 +32,9 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-3 p-0">
-                <div class="d-flex flex-column flex-shrink-0 p-3 shadow" style="height: 100vh;">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-lg-2 p-0">
+                <div class="d-flex flex-column p-3 bg-light shadow min-vh-100 collapse show" style="height:100%;">
                     <a href="/admin" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                         <span class="fs-4">Admin Panel</span>
                     </a>
@@ -46,40 +46,25 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/admin/produk" class="nav-link {{ request()->is('admin/produk') ? 'active' : '' }}">
+                            <a href="/admin/produk" class="nav-link {{ request()->is('admin/produk*') ? 'active' : '' }}">
                                 Produk
                             </a>
                         </li>
                         <li>
-                            <a href="/admin/pesanan" class="nav-link {{ request()->is('admin/pesanan') ? 'active' : '' }}">
+                            <a href="/admin/pesanan" class="nav-link {{ request()->is('admin/pesanan*') ? 'active' : '' }}">
                                 Pesanan
                             </a>
                         </li>
                     </ul>
-                    {{-- <hr>
-                    <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <strong>Admin</strong>
-                        </a>
-                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </div> --}}
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col p-3">
                 <div class="p-3">
                     @yield('content')
                 </div>
             </div>
         </div>
     </div>
-
-    <footer class="footer mt-auto py-3" style="background-color: #27374D;">
-        <div class="container text-center">
-            <span style="color: white;">Hak Cipta &copy; 2024 Admin Panel</span>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

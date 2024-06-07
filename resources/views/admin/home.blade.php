@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Produk')
+@section('title', 'Home')
 
 @section('content')
-    <h1>Halaman Produk</h1>
+    <h1>Halaman Home</h1>
 
 @endsection
