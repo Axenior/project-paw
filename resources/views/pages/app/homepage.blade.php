@@ -25,7 +25,7 @@
               <span class="d-block">Best Product For Music Enthusiast</span>
               <h5 class="mt-3">LOGITECH Stereo Headset H111</h5>
               <span class="d-block mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam reiciendis quae quis aliquid recusandae harum!</span>
-              <a href="" class="dc-none py-2 px-3 bg-light-steel-blue midnight-blue d-inline-block rounded-5 mt-4">BELI SEKARANG</a>
+              <a href="/detail" class="dc-none py-2 px-3 bg-light-steel-blue midnight-blue d-inline-block rounded-5 mt-4">BELI SEKARANG</a>
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@
               <span class="d-block">Best Product For Music Enthusiast</span>
               <h5 class="mt-3">LOGITECH Stereo Headset H111</h5>
               <span class="d-block mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam reiciendis quae quis aliquid recusandae harum!</span>
-              <a href="" class="dc-none py-2 px-3 bg-light-steel-blue midnight-blue d-inline-block rounded-5 mt-4">BELI SEKARANG</a>
+              <a href="/detail" class="dc-none py-2 px-3 bg-light-steel-blue midnight-blue d-inline-block rounded-5 mt-4">BELI SEKARANG</a>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
               <span class="d-block">Best Product For Music Enthusiast</span>
               <h5 class="mt-3">LOGITECH Stereo Headset H111</h5>
               <span class="d-block mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam reiciendis quae quis aliquid recusandae harum!</span>
-              <a href="" class="dc-none py-2 px-3 bg-light-steel-blue midnight-blue d-inline-block rounded-5 mt-4">BELI SEKARANG</a>
+              <a href="/detail" class="dc-none py-2 px-3 bg-light-steel-blue midnight-blue d-inline-block rounded-5 mt-4">BELI SEKARANG</a>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@
     </div>
     <div class="row g-2">
       <div class="col-6 col-md-4 col-lg-3">
-        <a href="" class="dc-none card p-2 rounded-4 shadow">
+        <a href="/detail" class="dc-none card p-2 rounded-4 shadow">
           <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1584&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
             <h5 class="">Samsung Galaxy A23</h5>
@@ -88,7 +88,7 @@
         </a>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <a href="" class="dc-none card p-2 rounded-4 shadow">
+        <a href="/detail" class="dc-none card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
             <h5 class="">Xiaomi 12T Pro</h5>
@@ -98,7 +98,7 @@
         </a>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <a href="" class="dc-none card p-2 rounded-4 shadow">
+        <a href="/detail" class="dc-none card p-2 rounded-4 shadow">
           <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1584&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
             <h5 class="">Samsung Galaxy A23</h5>
@@ -108,7 +108,7 @@
         </a>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <a href="" class="dc-none card p-2 rounded-4 shadow">
+        <a href="/detail" class="dc-none card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
             <h5 class="">Samsung Galaxy A23</h5>
@@ -144,7 +144,7 @@
   <div class="mb-5">
     <h4>Produk Terbaru</h4>
     <div class="row g-2">
-      <a href="" class="dc-none col-4 col-md-3 col-lg-2">
+      <a href="/detail" class="dc-none col-4 col-md-3 col-lg-2">
         <div class="card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
@@ -154,7 +154,7 @@
           </div>
         </div>
       </a>
-      <a href="" class="dc-none col-4 col-md-3 col-lg-2">
+      <a href="/detail" class="dc-none col-4 col-md-3 col-lg-2">
         <div class="card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
@@ -163,7 +163,7 @@
           </div>
         </div>
       </a>
-      <a href="" class="dc-none col-4 col-md-3 col-lg-2">
+      <a href="/detail" class="dc-none col-4 col-md-3 col-lg-2">
         <div class="card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
@@ -172,7 +172,7 @@
           </div>
         </div>
       </a>
-      <a href="" class="dc-none col-4 col-md-3 col-lg-2">
+      <a href="/detail" class="dc-none col-4 col-md-3 col-lg-2">
         <div class="card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
@@ -182,7 +182,7 @@
           </div>
         </div>
       </a>
-      <a href="" class="dc-none col-4 col-md-3 col-lg-2">
+      <a href="/detail" class="dc-none col-4 col-md-3 col-lg-2">
         <div class="card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
@@ -191,7 +191,7 @@
           </div>
         </div>
       </a>
-      <a href="" class="dc-none col-4 col-md-3 col-lg-2">
+      <a href="/detail" class="dc-none col-4 col-md-3 col-lg-2">
         <div class="card p-2 rounded-4 shadow">
           <img src="https://plus.unsplash.com/premium_photo-1670537994863-5ad53a3214e0?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="product card-img-top border-dark rounded-3" alt="...">
           <div class="card-body px-0 pt-2 pb-0">
