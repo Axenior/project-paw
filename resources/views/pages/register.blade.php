@@ -17,7 +17,8 @@
                     <i class="bi bi-person-fill"></i> Register
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="{{route('register.process')}}" method="POST">
+                        @csrf
                         <div class="form-group my-3">
                             <label for="username"><i class="bi bi-person"></i> Username</label>
                             <input type="text" name="username" id="username" class="form-control" required>
