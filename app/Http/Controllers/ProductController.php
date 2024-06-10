@@ -22,6 +22,12 @@ class ProductController extends Controller
         );
     }
 
+    public function admin()
+    {   
+        $products = Product::all(); 
+        return view('pages.admin.product.index', compact('products'));
+    }
+
     public function detail(Product $product){
         return view('pages.app.product.show',
             [
@@ -44,15 +50,41 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pages.admin.product.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {   
+
+        // validasi data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string',
+            'warranty' => 'required|string|max:255',
+            'memory' => 'required|string|max:255',
+            'price' => 'required|integer',
+            'discount' => 'nullable|integer|min:0|max:100',
+        ]);
+
+        // upload foto
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/products'), $imageName);
+            $validated['path'] = 'images/products/' . $imageName;
+        }
+
+        // Simpan produk ke database
+        $product = new Product();
+        $product->fill($validated); 
+        $product->save(); 
+
+        // redirect produk berhasil
+        return redirect()->route('product.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
     /**
@@ -60,7 +92,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('pages.admin.product.show', ['product' => $product]);
     }
 
     /**
@@ -68,7 +100,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('pages.admin.product.edit', compact('product'));
     }
 
     /**
@@ -76,7 +108,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'description' => 'required|string',
+            'warranty' => 'required|string|max:255',
+            'memory' => 'required|string|max:255',
+            'price' => 'required|integer',
+            'discount' => 'nullable|integer|min:0|max:100',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/products'), $imageName);
+            $validated['path'] = 'images/products/' . $imageName;
+        }
+
+        $product->update($validated);
+
+        return redirect()->route('product.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
     /**
@@ -84,6 +134,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index')->with('success', 'Produk berhasil dihapus.');
     }
 }
