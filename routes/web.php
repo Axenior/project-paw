@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProdukController;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,43 +21,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/','/homepage');
 
-Route::get('/homepage', function(){
-    return view('pages.app.homepage');
-});
+Route::get('/homepage',[HomepageController::class, 'index'])->name('homepage');
 
-Route::get('/smartphone', function(){
-    return view('pages.app.product.index',[
-        'product' => 'Smartphone'
-    ]);
-});
+Route::get('/category/{category?}',[ProductController::class, 'index'])->name('product.category');
+Route::get('/product/{product?}',[ProductController::class, 'detail'])->name('product.detail');
+Route::get('/product/{product}/checkout', [ProductController::class, 'checkout'])->name('product.checkout');
 
-Route::get('/laptop', function(){
-    return view('pages.app.product.index',[
-        'product' => 'Laptop'
-    ]);
-});
-
-Route::get('/tablet', function(){
-    return view('pages.app.product.index',[
-        'product' => 'Tablet'
-    ]);
-});
-
-Route::get('/detail', function(){
-    return view('pages.app.product.show');
-});
-
-Route::get('/checkout', function(){
-    return view('pages.app.product.checkout');
-});
-
-Route::get('/cart', function(){
-    return view('pages.app.cart.index');
-});
+Route::resource('/cart', CartController::class)->middleware('auth');
 
 Route::get('/cart/edit', function(){
     return view('pages.app.cart.edit');
@@ -70,11 +48,11 @@ Route::get('/admin/produk/create', function () {
 Route::get('/admin/pesanan', function () {
     return view('pages.admin.order.index');})->name('admin.order');
 
-Route::get('/register', function () {
-    return view('pages.register');
-});
 
-Route::get('/login', function () {
-    return view('pages.login');
-});
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login',[AuthController::class, 'loginProcess'])->name('login.process');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerProcess'])->name('register.process');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 

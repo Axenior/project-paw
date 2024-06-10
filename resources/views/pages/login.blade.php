@@ -20,10 +20,11 @@
                     <i class="bi bi-person-fill"></i> Login
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="{{route('login.process')}}" method="POST">
+                        @csrf
                         <div class="form-group my-3">
-                            <label for="username"><i class="bi bi-person"></i> Username</label>
-                            <input type="text" name="username" id="username" class="form-control" required>
+                            <label for="email"><i class="bi bi-person"></i>Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group my-3">
                             <label for="password"><i class="bi bi-lock"></i> Password</label>
@@ -31,7 +32,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary mt-4 w-45"><i class="bi bi-box-arrow-in-right"></i> Masuk</button>
-                            <button type="button" class="btn btn-secondary mt-4 w-45"><i class="bi bi-pencil-square"></i> Register</button>
+                            <a href="/register" class="btn btn-secondary mt-4 w-45"><i class="bi bi-pencil-square"></i> Register</a>
                         </div>
                         <button type="button" class="btn btn-outline-secondary mt-4 w-100" onclick="history.back()"><i class="bi bi-arrow-left"></i> Kembali</button>
                     </form>
