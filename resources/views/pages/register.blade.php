@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
     crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" 
+    rel="stylesheet" integrity="sha512-yT4g0h6IQbnpIdh8TmbWnHkhYbA5BG4G/qDJ2Zz44R4hwj5fBrB/UcU73gzQ6AU+g5w9Q1w9oOCjoAKIoeUVxw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
   <div class="d-flex justify-content-center align-items-center vh-100">
@@ -31,7 +34,12 @@
                             <label for="password"><i class="bi bi-lock"></i> Password</label>
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
+                        <div class="form-group my-3">
+                            <label for="password_confirmation"><i class="bi bi-lock"></i> Confirm Password</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+                        </div>
                         <button type="submit" class="btn btn-primary mt-4 w-100"><i class="bi bi-box-arrow-in-right"></i> Register</button>
+                        <button type="button" class="btn btn-outline-secondary mt-4 w-100" onclick="history.back()"><i class="bi bi-arrow-left"></i> Kembali</button>
                     </form>
                 </div>
             </div>
