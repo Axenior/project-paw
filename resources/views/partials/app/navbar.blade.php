@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand bg-midnight-blue">
   <div class="container">
-    <a class="navbar-brand text-white" href="#">
+    <a class="navbar-brand text-white" href="/homepage">
       <i class="bi bi-cart4 fs-5"></i>
       <span class="fs-6">TOKO ONLEN</span>
     </a>
@@ -8,14 +8,23 @@
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="mr-2 d-lg-inline text-gray-600 small">Guest</span>
+            <span class="mr-2 d-lg-inline text-gray-600 small">{{auth()->user() ? auth()->user()->username : 'Guest'}}</span>
             <i class="bi bi-person fs-5"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Login</a></li>
-            <li><a class="dropdown-item" href="#">Register</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            @if (!auth()->user())
+            <li><a class="dropdown-item" href="/login">Login</a></li>
+            <li><a class="dropdown-item" href="/register">Register</a></li>
+            @else            
+              <li><a class="dropdown-item" href="/cart">Keranjang</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>                    
+                <form action="{{route('logout')}}" method="POST">
+                  @csrf
+                  <button class="dropdown-item" type="submit">Logout</button>
+                </form>
+              </li>
+            @endif
           </ul>
         </li>
       </ul>

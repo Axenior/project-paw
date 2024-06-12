@@ -20,6 +20,7 @@
 
 .dc-none{
   text-decoration: none;
+  border: none;
 }
 
 
@@ -101,6 +102,13 @@
 .light-blue{
   color: #DDE6ED;
 }
+
+
+/* Border */
+.border-midnight-blue{
+  border: 1px solid #27374D;
+}
+
 
 /* Gradient Background */
 .bg-cucumber-water{

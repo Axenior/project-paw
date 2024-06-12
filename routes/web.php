@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,50 +20,51 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/','/homepage');
 
-Route::get('/homepage', function(){
-    return view('pages.app.homepage');
-});
+Route::get('/homepage',[HomepageController::class, 'index'])->name('homepage');
 
-Route::get('/smartphone', function(){
-    return view('pages.app.product.index',[
-        'product' => 'Smartphone'
-    ]);
-});
+Route::get('/category/{category?}',[ProductController::class, 'index'])->name('product.category');
+Route::get('/product/{product?}',[ProductController::class, 'detail'])->name('product.detail');
+Route::get('/product/{product}/checkout', [ProductController::class, 'checkout'])->name('product.checkout');
 
-Route::get('/laptop', function(){
-    return view('pages.app.product.index',[
-        'product' => 'Laptop'
-    ]);
-});
+Route::resource('/cart', CartController::class)->middleware('auth');
 
-Route::get('/tablet', function(){
-    return view('pages.app.product.index',[
-        'product' => 'Tablet'
-    ]);
+Route::get('/cart/edit', function(){
+    return view('pages.app.cart.edit');
 });
-
 
 Route::get('/admin', function () {
-    return view('layouts.admin');
+    return view('pages.admin.dashboard');
 });
 
-Route::get('/admin/produk', function () {
-    return view('admin.product');})->name('admin.produk');
+// PRODUK
+Route::get('/admin/produk', [ProductController::class, 'admin'])->name('product.index');
+
+// TAMBAH PRODUK
+Route::get('/admin/produk/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/admin/produk', [ProductController::class, 'store'])->name('product.store');
+
+// DETAIL PRODUK
+Route::get('/admin/produk/{product}', [ProductController::class, 'show'])->name('product.show');
+
+// EDIT PRODUK
+Route::get('/admin/produk/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/admin/produk/{product}', [ProductController::class, 'update'])->name('product.update');
+
+// HAPUS PRODUK
+Route::delete('/admin/produk/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('/admin/pesanan', function () {
-    return view('admin.order.index');})->name('admin.order');
+    return view('pages.admin.order.index');})->name('admin.order');
 
-Route::get('/register', function () {
-    return view('pages.register');
-});
 
-Route::get('/login', function () {
-    return view('pages.login');
-});
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login',[AuthController::class, 'loginProcess'])->name('login.process');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerProcess'])->name('register.process');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 // Route::get('/admin/order/',function(){
 //     return view('admin.order.index');

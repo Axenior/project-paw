@@ -17,9 +17,10 @@
                     <i class="bi bi-person-fill"></i> Login
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="{{route('login.process')}}" method="POST">
+                        @csrf
                         <div class="form-group my-3">
-                            <label for="email"><i class="bi bi-envelope"></i> Email</label>
+                            <label for="email"><i class="bi bi-person"></i>Email</label>
                             <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group my-3">
