@@ -13,7 +13,7 @@
                     <img src="https://via.placeholder.com/100" alt="Product Image">
                 </div>
                 <div class="item-details">
-                    <h3>Nama Produk</h3>
+                    <h3>Samsung S21 Ultra 5G</h3>
                     <p>Jumlah: 2</p>
                     <p>Harga: Rp200.000</p>
                 </div>
@@ -26,7 +26,7 @@
                     <img src="https://via.placeholder.com/100" alt="Product Image">
                 </div>
                 <div class="item-details">
-                    <h3>Nama Produk</h3>
+                    <h3>iPhone 12 Pro</h3>
                     <p>Jumlah: 1</p>
                     <p>Harga: Rp150.000</p>
                 </div>
