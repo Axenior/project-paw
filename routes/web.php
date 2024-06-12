@@ -58,7 +58,6 @@ Route::delete('/admin/produk/{product}', [ProductController::class, 'destroy'])-
 Route::get('/admin/pesanan', function () {
     return view('pages.admin.order.index');})->name('admin.order');
 
-
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login',[AuthController::class, 'loginProcess'])->name('login.process');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -66,3 +65,6 @@ Route::post('/register', [AuthController::class, 'registerProcess'])->name('regi
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
+// Route::get('/admin/order/',function(){
+//     return view('admin.order.index');
+// });
