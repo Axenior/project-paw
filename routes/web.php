@@ -49,7 +49,7 @@ Route::get('/admin/produk', function () {
     return view('admin.product');})->name('admin.produk');
 
 Route::get('/admin/pesanan', function () {
-    return view('admin.order');})->name('admin.order');
+    return view('admin.order.index');})->name('admin.order');
 
 Route::get('/register', function () {
     return view('pages.register');
@@ -59,3 +59,6 @@ Route::get('/login', function () {
     return view('pages.login');
 });
 
+// Route::get('/admin/order/',function(){
+//     return view('admin.order.index');
+// });
