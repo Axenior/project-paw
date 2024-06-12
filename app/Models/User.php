@@ -18,9 +18,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'level',
     ];
 
     /**
@@ -41,4 +42,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function carts(){
+        return $this->belongsToMany(Product::class, 'carts')->withPivot('id','quantity');
+    }
+
+    public function purchases(){
+        return $this->belongsToMany(Product::class, 'purchases');
+    }
 }
