@@ -31,7 +31,7 @@
                             <button type="submit" class="btn btn-primary mt-4 w-45"><i class="bi bi-box-arrow-in-right"></i> Masuk</button>
                             <a href="/register" class="btn btn-secondary mt-4 w-45"><i class="bi bi-pencil-square"></i> Register</a>
                         </div>
-                        <button type="button" class="btn btn-outline-secondary mt-4 w-100" onclick="history.back()"><i class="bi bi-arrow-left"></i> Kembali</button>
+                        <button type="submit" class="btn btn-primary mt-4 w-100"><i class="bi bi-box-arrow-in-right"></i> Login</button>
                     </form>
                 </div>
             </div>
