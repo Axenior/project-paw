@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #27374D;">
   <div class="container">
-      <a class="navbar-brand" href="/admin" style="color: white;">Logo</a>
+    <a class="navbar-brand text-white" href="/admin">
+        <i class="bi bi-cart4 fs-5"></i>
+        <span class="fs-5">ADMIN PANEL</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
