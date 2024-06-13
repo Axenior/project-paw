@@ -16,8 +16,15 @@
             <li><a class="dropdown-item" href="/login">Login</a></li>
             <li><a class="dropdown-item" href="/register">Register</a></li>
             @else            
-              <li><a class="dropdown-item" href="/cart">Keranjang</a></li>
-              <li><hr class="dropdown-divider"></li>
+              @if (auth()->user()->level == 'client')
+                <li><a class="dropdown-item" href="/cart">Keranjang</a></li>
+                <li><a class="dropdown-item" href="/history">Riwayat Pemesanan</a></li>
+                    
+                @else
+                <li><a class="dropdown-item" href="/admin">Dashboard</a></li>
+
+              @endif
+                <li><hr class="dropdown-divider"></li>
               <li>                    
                 <form action="{{route('logout')}}" method="POST">
                   @csrf

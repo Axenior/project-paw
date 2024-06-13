@@ -3,10 +3,6 @@
 @section('content')
 
 <div class="container mt-3">
-  <form class="d-flex" role="search">
-    <input class="form-control rounded-start border-dark rounded-end-0 shadow" type="search" placeholder="Search" aria-label="Search" style="max-width: 500px">
-    <button class="btn btn-outline-dark rounded-start-0 shadow" type="submit"><i class="bi bi-search"></i></button>
-  </form>
 
   <div id="carouselExampleDark" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel">
     <div class="carousel-indicators">

@@ -31,7 +31,7 @@
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->category }}</td>
-                <td><img src="{{ asset($product->path) }}" alt="{{ $product->name }}" width="100"></td>
+                <td><img src="{{ asset($product->path) }}" alt="{{ $product->name }}" width="100px" height="100px" style="object-fit: cover"></td>
                 <td>{{ Str::limit($product->description, 50) }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->discount }}</td>
