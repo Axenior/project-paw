@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -36,25 +37,28 @@ Route::group(['middleware' => 'auth'], function(){
             return view('pages.admin.dashboard');
         });
         
+        // DASHBOARD
+        Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
         // PRODUK
-        Route::get('/admin/produk', [ProductController::class, 'admin'])->name('product.index');
+        Route::get('/admin/product', [ProductController::class, 'admin'])->name('product.index');
         
         // TAMBAH PRODUK
-        Route::get('/admin/produk/create', [ProductController::class, 'create'])->name('product.create');
-        Route::post('/admin/produk', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/admin/product/create', [ProductController::class, 'create'])->name('product.create');
+        Route::post('/admin/product', [ProductController::class, 'store'])->name('product.store');
         
         // DETAIL PRODUK
-        Route::get('/admin/produk/{product}', [ProductController::class, 'show'])->name('product.show');
+        Route::get('/admin/product/{product}', [ProductController::class, 'show'])->name('product.show');
         
         // EDIT PRODUK
-        Route::get('/admin/produk/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-        Route::put('/admin/produk/{product}', [ProductController::class, 'update'])->name('product.update');
+        Route::get('/admin/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+        Route::put('/admin/product/{product}', [ProductController::class, 'update'])->name('product.update');
         
         // HAPUS PRODUK
-        Route::delete('/admin/produk/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+        Route::delete('/admin/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
         
 
-        Route::get('/admin/pesanan', [OrderController::class, 'index'])->name('order.index');
+        Route::get('/admin/order', [OrderController::class, 'index'])->name('order.index');
                 
     });
 
