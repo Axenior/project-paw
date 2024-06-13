@@ -30,8 +30,13 @@
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
                       Admin 
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li>
+                        <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class="dropdown-item" type="submit">Logout</button>
+                      </form>
+                    </li>
                   </ul>
               </li>
           </ul>

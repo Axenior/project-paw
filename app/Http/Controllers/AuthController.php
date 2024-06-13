@@ -23,7 +23,7 @@ class AuthController extends Controller
             $user = Auth::user();
             $request->session()->regenerate();
             if($user->level == 'admin'){
-                return redirect()->intended('admin');
+                return redirect('/admin');
             }else if($user->level == 'client'){
                 return redirect()->intended('homepage');
             }
