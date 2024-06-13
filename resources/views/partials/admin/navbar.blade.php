@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #27374D;">
   <div class="container">
-      <a class="navbar-brand" href="/admin" style="color: white;">Logo</a>
+    <a class="navbar-brand text-white" href="/admin">
+        <i class="bi bi-cart4 fs-5"></i>
+        <span class="fs-5">ADMIN PANEL</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,8 +30,13 @@
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
                       Admin 
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li>
+                        <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class="dropdown-item" type="submit">Logout</button>
+                      </form>
+                    </li>
                   </ul>
               </li>
           </ul>
