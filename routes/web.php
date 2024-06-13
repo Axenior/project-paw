@@ -77,5 +77,3 @@ Route::group(['middleware' => 'guest'], function(){
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
