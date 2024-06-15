@@ -14,7 +14,8 @@ class AdminController extends Controller
     $soldProducts = Purchase::sum('quantity');
     $ordersProcessing = Purchase::where('status', 'diproses')->count();
     $ordersCompleted = Purchase::where('status', 'selesai')->count();
+    $recentOrders = Purchase::orderBy('created_at', 'desc')->take(5)->get();
 
-    return view('pages.admin.dashboard', compact('totalProducts', 'soldProducts', 'ordersProcessing', 'ordersCompleted'));
+    return view('pages.admin.dashboard', compact('totalProducts', 'soldProducts', 'ordersProcessing', 'ordersCompleted', 'recentOrders'));
     }
 }
