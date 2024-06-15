@@ -10,17 +10,17 @@
       <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto d-lg-none">
               <li class="nav-item">
-                  <a href="/admin" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
+                  <a href=" {{ route('admin.dashboard')}}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
                       Home
                   </a>
               </li>
               <li>
-                  <a href="/admin/produk" class="nav-link {{ request()->is('admin/produk*') ? 'active' : '' }}">
+                  <a href=" {{ route('product.index')}}" class="nav-link {{ request()->is('admin/product*') ? 'active' : '' }}">
                       Produk
                   </a>
               </li>
               <li>
-                  <a href="/admin/pesanan" class="nav-link {{ request()->is('admin/pesanan*') ? 'active' : '' }}">
+                  <a href=" {{ route('order.index')}}" class="nav-link {{ request()->is('admin/order*') ? 'active' : '' }}">
                       Pesanan
                   </a>
               </li>
