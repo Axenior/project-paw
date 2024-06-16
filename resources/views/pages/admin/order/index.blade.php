@@ -11,63 +11,108 @@
         {{ session('success') }}
     </div>
     @endif
-    <a href="{{ route('product.create') }}" class="btn btn-primary mb-3">Tambah Produk</a>
+
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Nama Pembeli</th>
                 <th>Nama</th>
                 <th>Kategori</th>
                 <th>Gambar</th>
                 <th>Deskripsi</th>
                 <th>Harga</th>
                 <th>Diskon</th>
+                <th>Jumlah</th>
+                <th>Status</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($products as $product)
+            @foreach($purchases as $purchase)
             <tr>
-                <td>{{ $product->id }}</td>
-                <td>{{ $product->product_name }}</td>
-                <td>{{ $product->product_category }}</td>
-                <td><img src="{{ asset($product->product_path) }}" alt="{{ $product->product_name }}" width="100px" height="100px" style="object-fit: cover"></td>
-                <td>{{ Str::limit($product->product_description, 50) }}</td>
-                <td>{{ $product->product_price }}</td>
-                <td>{{ $product->product_discount }}</td>
+                <td>{{ $purchase->id }}</td>
+                <td>{{ $purchase->first_name }} {{ $purchase->last_name }}</td>
+                <td>{{ $purchase->product_name }}</td>
+                <td>{{ $purchase->product_category }}</td>
+                <td><img src="{{ asset($purchase->product_path) }}" alt="{{ $purchase->product_name }}" width="100px" height="100px" style="object-fit: cover"></td>
+                <td>{{ Str::limit($purchase->product_description, 50) }}</td>
+                <td>{{ $purchase->product_price }}</td>
+                <td>{{ $purchase->product_discount }}</td>
+                <td>{{ $purchase->quantity }}</td>
+                <td>{{ $purchase->status}}</td>
                 <td>
-                    <a href="{{ route('product.show', $product->id) }}" class="btn btn-info btn-sm mb-2">Detail</a>
-                    <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm mb-2">Edit</a>
+                <a href="{{ route('order.show', $purchase->id) }}" class="btn btn-info btn-sm mb-2">Detail</a>
 
-                    <button type="button" class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product->id }}">
-                        Hapus
-                      </button>
+                @if($purchase->status == 'dipesan')
+                    <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#acceptModal{{ $purchase->id }}">
+                        Terima
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{ $purchase->id }}">
+                        Tolak
+                    </button>
+                    @elseif($purchase->status == 'diterima')
+                    <form action="{{ route('order.process', $purchase->id) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <button type="submit" class="btn btn-primary btn-sm mb-2">Proses</button>
+                    </form>
+                    @elseif($purchase->status == 'diproses')
+                    <form action="{{ route('order.complete', $purchase->id) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <button type="submit" class="btn btn-info btn-sm mb-2">Selesai</button>
+                    </form>
+                    @endif
 
-                      <div class="modal fade" id="deleteModal{{ $product->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $product->id }}" aria-hidden="true">
+                    <div class="modal fade" id="acceptModal{{ $purchase->id }}" tabindex="-1" aria-labelledby="acceptModalLabel{{ $purchase->id }}" aria-hidden="true">
                         <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Produk</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="acceptModalLabel{{ $purchase->id }}">Konfirmasi Terima Pesanan</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah Anda yakin ingin menerima pesanan ini?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <form action="{{ route('order.accept', $purchase->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-success">Terima</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                              Apakah Anda yakin ingin menghapus produk ini?
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                              <form action="{{ route('product.destroy', $product->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Hapus</button>
-                              </form>
-                            </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
+
+                    <div class="modal fade" id="rejectModal{{ $purchase->id }}" tabindex="-1" aria-labelledby="rejectModalLabel{{ $purchase->id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="rejectModalLabel{{ $purchase->id }}">Konfirmasi Tolak Pesanan</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah Anda yakin ingin menolak pesanan ini?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <form action="{{ route('order.reject', $purchase->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-danger">Tolak</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
 @endsection

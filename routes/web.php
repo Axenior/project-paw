@@ -57,8 +57,20 @@ Route::group(['middleware' => 'auth'], function(){
         // HAPUS PRODUK
         Route::delete('/admin/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
         
+        // DETAIL PESANAN
+        Route::get('/admin/pesanan/{purchase}', [OrderController::class, 'show'])->name('order.show');
 
-        Route::get('/admin/order', [OrderController::class, 'index'])->name('order.index');
+        // STATUS PESANAN
+        Route::post('/admin/pesanan/{purchase}/process', [OrderController::class, 'process'])->name('order.process');
+        Route::post('/admin/pesanan/{purchase}/complete', [OrderController::class, 'complete'])->name('order.complete');
+
+        // MENERIMA PESANAN
+        Route::post('/admin/pesanan/{purchase}/accept', [OrderController::class, 'accept'])->name('order.accept');
+    
+        // MENOLAK PESANAN
+        Route::post('/admin/pesanan/{purchase}/reject', [OrderController::class, 'reject'])->name('order.reject');
+        
+        Route::get('/admin/pesanan', [OrderController::class, 'index'])->name('order.index');
                 
     });
 
