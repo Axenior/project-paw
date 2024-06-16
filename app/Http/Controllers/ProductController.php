@@ -58,7 +58,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'warranty' => 'required|string|max:255',
             'memory' => 'required|string|max:255',
-            'price' => 'required|integer',
+            'price' => 'required|integer|min:100000',
             'discount' => 'nullable|integer|min:0|max:100',
         ]);
 

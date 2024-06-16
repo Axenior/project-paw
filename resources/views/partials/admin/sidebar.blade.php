@@ -10,12 +10,12 @@
           </a>
       </li>
       <li>
-          <a href="/admin/produk" class="nav-link {{ request()->is('admin/produk*') ? 'active' : '' }}">
+          <a href="/admin/product" class="nav-link {{ request()->is('admin/product*') ? 'active' : '' }}">
               Produk
           </a>
       </li>
       <li>
-          <a href="/admin/pesanan" class="nav-link {{ request()->is('admin/pesanan*') ? 'active' : '' }}">
+          <a href="/admin/order" class="nav-link {{ request()->is('admin/order*') ? 'active' : '' }}">
               Pesanan
           </a>
       </li>
