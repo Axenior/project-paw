@@ -24,8 +24,8 @@
         <div class="col-lg-3 col-sm-6 mb-4">
             <div class="card shadow text-white" style="background-color:#218838;">
                 <div class="card-body">
-                    <p class="card-text fs-4">Produk Terjual</p>
-                    <div class="h2 mb-0 font-weight-bold text-gray-800">{{ $soldProducts }}</div>
+                    <p class="card-text fs-4">Menunggu Diproses</p>
+                    <div class="h2 mb-0 font-weight-bold text-gray-800">{{ $orderedProduct }}</div>
                 </div>
                 <div class="card-footer bg-transparent text-center">
                     <a href="{{ route('order.index') }}" style="display: block; text-decoration: none; color: inherit;">
