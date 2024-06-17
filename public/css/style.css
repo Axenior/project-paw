@@ -150,3 +150,10 @@
 .bg-aqua-spray:hover {
   box-shadow: 0 0 20px rgba(0, 210, 255, 0.7), 0 0 40px rgba(58, 71, 213, 0.7);
 }
+
+/* Custom Font */
+*{
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+

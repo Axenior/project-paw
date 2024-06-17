@@ -33,10 +33,6 @@ Route::get('/product/{product?}',[ProductController::class, 'detail'])->name('pr
 
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'check_login:admin'], function(){
-        Route::get('/admin', function () {
-            return view('pages.admin.dashboard');
-        });
-        
         // DASHBOARD
         Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 

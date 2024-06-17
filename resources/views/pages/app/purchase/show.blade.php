@@ -11,7 +11,10 @@
   }
 </style>
   <div class="container mt-4">
-    <h3>Detail Riwayat Pemesanan</h3>
+    <div class="row d-flex mb-2">
+      <h3 class="col my-auto">Detail Riwayat Pemesanan</h3>
+      <h5 class="col my-auto text-end">Status: {{$purchase->status}}</h5>
+    </div>
     @if ($errors->any())
       <div class="alert alert-danger">
           <ul>
@@ -20,8 +23,8 @@
               @endforeach
           </ul>
       </div>
-  @endif
-  {{-- @dd($purchase) --}}
+    @endif
+    {{-- @dd($purchase) --}}
     <form action="{{route('checkout.store',[$purchase->id])}}" method="POST">
       @csrf
       <div class="row g-4">

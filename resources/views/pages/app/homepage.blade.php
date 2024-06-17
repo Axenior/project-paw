@@ -21,7 +21,7 @@
             <div class="p-1">
               <span class="d-block">Best Product For {{ucwords($bestProduct->category)}}</span>
               <h5 class="mt-3">{{$bestProduct->name}}</h5>
-              <span class="d-block mt-3">{{ implode(' ', array_slice(explode(' ', $bestProduct->description), 0, 20)) }} ...</span>
+              <span class="d-block mt-3">{{ Str::limit($bestProduct->description, 120) }}</span>
               <a href="{{ route('product.detail', $bestProduct->id) }}" class="dc-none py-2 px-3 bg-light-steel-blue midnight-blue d-inline-block rounded-5 mt-4">BELI SEKARANG</a>
             </div>
           </div>

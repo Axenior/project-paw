@@ -1,13 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container" style="min-height: 73vh">
+  <div class="container">
     <h4 class="mt-2">Riwayat Pemesanan</h4>
     
     @if(session()->has('success'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{session()->get('success')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
+
+    @if ($purchases->isEmpty())
+      <div class="row g-5 mb-4">
+        <div class="col col-12 col-md-5">
+          <img src="images/assets/empty_order.svg" alt="" class="w-100">
+        </div>
+        <div class="col col-12 col-md-7 d-flex border-3 border-start">
+          <h4 class="my-auto">Kamu belum melakukan pemesanan</h4>
+        </div>
       </div>
     @endif
 
@@ -18,20 +29,21 @@
         <form action="{{route('history.detail',$purchase->id)}}" method="GET" class="dc-none midnight-blue">
           @csrf
           <input type="text" name="quantity" value="{{$purchase->quantity}}" hidden>
-          <button type="submit" class="dc-none p-0">
-            <div class="w-100 p-0 border-midnight-blue rounded mt-2" style="overflow: hidden">
+          <button type="submit" class="dc-none p-0 rounded">
+            <div class="w-100 p-0 border-midnight-blue rounded" style="overflow: hidden">
               <div class="row m-2">
                 <div class="col col-3 p-0">
                   <img src="{{asset($purchase->product_path)}}" alt="..." class="card-img-top product rounded">
                 </div>
                 <div class="col col-9">
-                  <p class="mb-1 text-start">{{$purchase->product_name}}</p>
+                  <p class="mb-1 text-start" style="float: left">{{$purchase->product_name}}</p>
+                  <p class="mb-1 text-end" >status: {{$purchase->status}}</p>
                   <h5 class="mb-1 text-start">Rp{{number_format(($purchase->product_price) - ($purchase->product_discount * $purchase->product_price / 100), 2, ',', '.')}}</h5>
                   <div class="row">
                     @if ($purchase->product_discount != 0)
                       <div class="col text-start"><p><span class="text-danger">{{$purchase->product_discount}}% </span><s>Rp{{number_format($purchase->product_price, 2, ',', '.')}}</s></p></div>
                     @endif
-                    <div class="col text-end p-0">{{$purchase->quantity}} x Rp{{number_format(($purchase->product_price) - ($purchase->product_discount * $purchase->product_price / 100), 2, ',', '.')}}</div>
+                    <div class="col text-end p-0">{{$purchase->quantity}} x Rp{{number_format   (($purchase->product_price) - ($purchase->product_discount * $purchase->product_price / 100), 2, ',', '.')}}</div>
                   </div>
                 </div>
               </div>

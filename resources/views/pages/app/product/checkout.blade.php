@@ -33,7 +33,7 @@
           <div class="row mt-2">
             <div class="col">
               <label for="first-name">Nama Depan</label>
-              <input type="text" name="first_name" id="first-name" class="form-control border-midnight-blue" value="{{ old('first_name') }}">
+              <input type="text" name="first_name" id="first-name" class="form-control border-midnight-blue" value="{{ old('first_name') }}" required>
             </div>
             <div class="col">
               <label for="last-name">Nama Belakang</label>
@@ -42,7 +42,7 @@
           </div>
 
           <label for="address_title" class="mt-2">Judul Alamat (Contoh : Kost, Kantor, Rumah Nenek)</label>
-          <input type="text" name="address_title" id="address_title" class="form-control border-midnight-blue" value="{{ old('address_title') }}">
+          <input type="text" name="address_title" id="address_title" class="form-control border-midnight-blue" value="{{ old('address_title') }}" required>
 
           <label for="address" class="mt-2">Alamat</label>
           <textarea name="address" id="address" cols="30" rows="4" class="d-block form-control border-midnight-blue" style="resize: none">{{ old('address') }}</textarea>
@@ -50,22 +50,22 @@
           <div class="row mt-2">
             <div class="col">
               <label for="province">Provinsi</label>
-              <input type="text" name="province" id="province" class="form-control border-midnight-blue" value="{{ old('province') }}">
+              <input type="text" name="province" id="province" class="form-control border-midnight-blue" value="{{ old('province') }}" required>
             </div>
             <div class="col">
               <label for="city">Kota</label>
-              <input type="text" name="city" id="city" class="form-control border-midnight-blue" value="{{ old('city') }}">
+              <input type="text" name="city" id="city" class="form-control border-midnight-blue" value="{{ old('city') }}" required>
             </div>
           </div>
 
           <div class="row mt-2">
             <div class="col">
               <label for="subdistrict">Kecamatan</label>
-              <input type="text" name="subdistrict" id="subdistrict" class="form-control border-midnight-blue" value="{{ old('subdistrict') }}">
+              <input type="text" name="subdistrict" id="subdistrict" class="form-control border-midnight-blue" value="{{ old('subdistrict') }}" required>
             </div>
             <div class="col">
               <label for="postal-code">Kode Pos</label>
-              <input type="text" name="postal_code" id="postal-code" class="form-control border-midnight-blue" value="{{ old('postal_code') }}">
+              <input type="text" name="postal_code" id="postal-code" class="form-control border-midnight-blue" value="{{ old('postal_code') }}" required>
             </div>
           </div>
 
