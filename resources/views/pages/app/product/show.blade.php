@@ -47,7 +47,6 @@
           <div class="col">
             <h5 class=" my-auto">Total</h5>
           </div>
-          {{-- <input type="text" class="col dc-none text-dark" name="total" id="total" value="Rp2.200.000,00" style="font-weight: 600;" disabled> --}}
           <div class="col">
             <h6 id="total">Rp{{number_format(($product->price) - ($product->discount * $product->price / 100), 2, ',', '.')}}</h6>
           </div>
