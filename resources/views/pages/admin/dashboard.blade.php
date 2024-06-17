@@ -28,7 +28,7 @@
                     <div class="h2 mb-0 font-weight-bold text-gray-800">{{ $orderedProduct }}</div>
                 </div>
                 <div class="card-footer bg-transparent text-center">
-                    <a href="{{ route('order.index') }}" style="display: block; text-decoration: none; color: inherit;">
+                    <a href="{{ route('order.index' , ['status' => 'dipesan']) }}" style="display: block; text-decoration: none; color: inherit;">
                         <span style="cursor: pointer; text-decoration: none;">Lihat Selengkapnya</span>
                     </a>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="h2 mb-0 font-weight-bold text-gray-800">{{ $ordersProcessing }}</div>
                 </div>
                 <div class="card-footer bg-transparent text-center">
-                    <a href="{{ route('order.index') }}" style="display: block; text-decoration: none; color: inherit;">
+                    <a href="{{ route('order.index' , ['status' => 'diproses']) }}" style="display: block; text-decoration: none; color: inherit;">
                         <span style="cursor: pointer; text-decoration: none;">Lihat Selengkapnya</span>
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="h2 mb-0 font-weight-bold text-gray-800">{{ $ordersCompleted }}</div>
                 </div>
                 <div class="card-footer bg-transparent text-center">
-                    <a href="{{ route('order.index') }}" style="display: block; text-decoration: none; color: inherit;">
+                    <a href="{{ route('order.index' , ['status' => 'selesai']) }}" style="display: block; text-decoration: none; color: inherit;">
                         <span style="cursor: pointer; text-decoration: none;">Lihat Selengkapnya</span>
                     </a>
                 </div>
@@ -105,4 +105,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    function setDefaultFilter(status) {
+        document.getElementById('filter-status').value = status;
+        filterOrders();
+
+        var url = '{{ route("order.index") }}' + '?status=' + status;
+        window.location.href = url;
+    }
+</script>
 @endsection

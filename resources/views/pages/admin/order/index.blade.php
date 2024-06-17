@@ -120,6 +120,17 @@
 </div>
 
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var status = urlParams.get('status');
+        
+        if (status) {
+            document.getElementById('filter-status').value = status;
+            filterOrders();
+        }
+    });
+
 function filterOrders() {
     var status = document.getElementById('filter-status').value;
     var rows = document.querySelectorAll('#orders-table .order-row');
