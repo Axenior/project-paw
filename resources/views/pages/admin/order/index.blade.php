@@ -12,7 +12,17 @@
     </div>
     @endif
 
-    <table class="table table-bordered">
+    <div class="mb-3">
+        <label for="filter-status" class="form-label">Status Pesanan:</label>
+        <select id="filter-status" class="form-select" onchange="filterOrders()">
+            <option value="all">Semua</option>
+            <option value="dipesan">Dipesan</option>
+            <option value="diproses">Diproses</option>
+            <option value="selesai">Selesai</option>
+        </select>
+    </div>
+    
+    <table id="orders-table" class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
@@ -30,7 +40,7 @@
         </thead>
         <tbody>
             @foreach($purchases as $purchase)
-            <tr>
+            <tr class="order-row" data-status="{{ $purchase->status }}">
                 <td>{{ $purchase->id }}</td>
                 <td>{{ $purchase->first_name }} {{ $purchase->last_name }}</td>
                 <td>{{ $purchase->product_name }}</td>
@@ -40,29 +50,23 @@
                 <td>{{ $purchase->product_price }}</td>
                 <td>{{ $purchase->product_discount }}</td>
                 <td>{{ $purchase->quantity }}</td>
-                <td>{{ $purchase->status}}</td>
+                <td>{{ $purchase->status }}</td>
                 <td>
-                <a href="{{ route('order.show', $purchase->id) }}" class="btn btn-info btn-sm mb-2">Detail</a>
+                    <a href="{{ route('order.show', $purchase->id) }}" class="btn btn-info btn-sm mb-2">Detail</a>
 
-                @if($purchase->status == 'dipesan')
-                    <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#acceptModal{{ $purchase->id }}">
-                        Terima
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{ $purchase->id }}">
-                        Tolak
-                    </button>
-                    @elseif($purchase->status == 'diterima')
-                    <form action="{{ route('order.process', $purchase->id) }}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <button type="submit" class="btn btn-primary btn-sm mb-2">Proses</button>
-                    </form>
+                    @if($purchase->status == 'dipesan')
+                        <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#acceptModal{{ $purchase->id }}">
+                            Terima
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{ $purchase->id }}">
+                            Tolak
+                        </button>
                     @elseif($purchase->status == 'diproses')
-                    <form action="{{ route('order.complete', $purchase->id) }}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <button type="submit" class="btn btn-info btn-sm mb-2">Selesai</button>
-                    </form>
+                        <form action="{{ route('order.complete', $purchase->id) }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="btn btn-info btn-sm mb-2">Selesai</button>
+                        </form>
                     @endif
 
                     <div class="modal fade" id="acceptModal{{ $purchase->id }}" tabindex="-1" aria-labelledby="acceptModalLabel{{ $purchase->id }}" aria-hidden="true">
@@ -115,4 +119,18 @@
     </table>
 </div>
 
+<script>
+function filterOrders() {
+    var status = document.getElementById('filter-status').value;
+    var rows = document.querySelectorAll('#orders-table .order-row');
+    
+    rows.forEach(function(row) {
+        if (status === 'all' || row.getAttribute('data-status') === status) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+</script>
 @endsection
