@@ -11,11 +11,11 @@ class AdminController extends Controller
     public function dashboard()
     {
     $totalProducts = Product::count();
-    $soldProducts = Purchase::sum('quantity');
+    $orderedProduct = Purchase::where('status', 'dipesan')->count();
     $ordersProcessing = Purchase::where('status', 'diproses')->count();
     $ordersCompleted = Purchase::where('status', 'selesai')->count();
     $recentOrders = Purchase::orderBy('created_at', 'desc')->take(5)->get();
 
-    return view('pages.admin.dashboard', compact('totalProducts', 'soldProducts', 'ordersProcessing', 'ordersCompleted', 'recentOrders'));
+    return view('pages.admin.dashboard', compact('totalProducts', 'orderedProduct', 'ordersProcessing', 'ordersCompleted', 'recentOrders'));
     }
 }
