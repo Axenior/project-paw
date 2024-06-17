@@ -47,7 +47,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class, 'carts')->withPivot('id','quantity');
     }
 
+    // public function purchases(){
+    //     return $this->belongsToMany(Product::class, 'purchases')->withPivot('id','product_price', 'product_discount', 'quantity','first_name','last_name', 'address_title', 'address', 'province', 'city', 'subdistrict', 'postal_code', 'shipping_service', 'shipping_service_cost', 'shipping_cost');
+    // }
+
     public function purchases(){
-        return $this->belongsToMany(Product::class, 'purchases');
+        return $this->hasMany(Purchase::class);
     }
 }

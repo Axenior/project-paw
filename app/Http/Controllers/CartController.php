@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,13 +38,19 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::create([
-            'user_id' => $request->user_id,
-            'product_id' => $request->product_id,
-            'quantity' => $request->quantity
+        $validated = $request->validate([
+            'user_id' => 'required|integer',
+            'product_id' => 'required|integer',
+            'quantity' => 'required|integer|min:1',
         ]);
 
-        return redirect()->back();
+        $cart = new Cart();
+        $cart->fill($validated); 
+        $cart->save(); 
+
+        $productName = Product::where('id',$request->product_id)->first()->name;
+        
+        return redirect()->route('cart.index')->with('success','Produk ' . $productName .' berhasil ditambahkan ke keranjang');
     }
 
     /**
@@ -59,7 +66,7 @@ class CartController extends Controller
      */
     public function edit(Cart $cart)
     {
-        //
+        return view('pages.app.cart.edit', compact('cart'));
     }
 
     /**
@@ -67,7 +74,17 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        $validated = $request->validate([
+            'user_id' => 'required|integer',
+            'product_id' => 'required|integer',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $cart->update($validated);
+
+        $productName = Product::where('id',$request->product_id)->first()->name;
+        
+        return redirect()->route('cart.index')->with('success','Produk ' . $productName .' berhasil diperbarui');
     }
 
     /**
@@ -75,7 +92,9 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
+        $productName = Product::where('id',$cart->product_id)->first()->name;
         $cart->delete();
-        return redirect()->back();
+
+        return redirect()->route('cart.index')->with('success','Produk ' . $productName .' berhasil dihapus dari keranjang');
     }
 }

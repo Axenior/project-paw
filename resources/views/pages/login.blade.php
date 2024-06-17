@@ -20,17 +20,18 @@
                     <form action="{{route('login.process')}}" method="POST">
                         @csrf
                         <div class="form-group my-3">
-                            <label for="email"><i class="bi bi-person"></i>Email</label>
+                            <label for="email"><i class="bi bi-envelope"></i> Email</label>
                             <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group my-3">
                             <label for="password"><i class="bi bi-lock"></i> Password</label>
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
-                        <div class="text-end">
-                            <a href="">Register</a>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary mt-4 w-45"><i class="bi bi-box-arrow-in-right"></i> Masuk</button>
+                            <a href="/register" class="btn btn-secondary mt-4 w-45"><i class="bi bi-pencil-square"></i> Register</a>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-4 w-100"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+                        <button onclick="history.back()" class="btn btn-primary mt-4 w-100"><i class="bi bi-box-arrow-in-right"></i>Kembali</button>
                     </form>
                 </div>
             </div>

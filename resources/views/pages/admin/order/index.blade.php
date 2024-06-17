@@ -2,42 +2,117 @@
 
 @section('title', 'Pesanan')
 
-@section('content') 
-    <div class="order-container">
-        <div class="order-header">  
-            <h2>Detail Pesanan</h2> 
-        </div>
-        <div class="order-content">
-            <div class="order-item d-flex align-items-center">
-                <div class="item-image">
-                    <img src="https://via.placeholder.com/100" alt="Product Image">
-                </div>
-                <div class="item-details">
-                    <h3>Samsung S21 Ultra 5G</h3>
-                    <p>Jumlah: 2</p>
-                    <p>Harga: Rp200.000</p>
-                </div>
-                <div class="item-total">
-                    <p>Total: Rp400.000</p>
-                </div>
-            </div>
-            <div class="order-item d-flex align-items-center">
-                <div class="item-image">
-                    <img src="https://via.placeholder.com/100" alt="Product Image">
-                </div>
-                <div class="item-details">
-                    <h3>iPhone 12 Pro</h3>
-                    <p>Jumlah: 1</p>
-                    <p>Harga: Rp150.000</p>
-                </div>
-                <div class="item-total">
-                    <p>Total: Rp150.000</p>
-                </div>
-            </div>
-        </div>
-        <div class="order-footer text-center mt-3">
-            <button class="btn order-button">Pesan Sekarang</button>
-        </div>
-    </div>
-@endsection
+@section('content')
+<div class="container">
+    <h1>Halaman Pesanan</h1>
 
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama Pembeli</th>
+                <th>Nama</th>
+                <th>Kategori</th>
+                <th>Gambar</th>
+                <th>Deskripsi</th>
+                <th>Harga</th>
+                <th>Diskon</th>
+                <th>Jumlah</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($purchases as $purchase)
+            <tr>
+                <td>{{ $purchase->id }}</td>
+                <td>{{ $purchase->first_name }} {{ $purchase->last_name }}</td>
+                <td>{{ $purchase->product_name }}</td>
+                <td>{{ $purchase->product_category }}</td>
+                <td><img src="{{ asset($purchase->product_path) }}" alt="{{ $purchase->product_name }}" width="100px" height="100px" style="object-fit: cover"></td>
+                <td>{{ Str::limit($purchase->product_description, 50) }}</td>
+                <td>{{ $purchase->product_price }}</td>
+                <td>{{ $purchase->product_discount }}</td>
+                <td>{{ $purchase->quantity }}</td>
+                <td>{{ $purchase->status}}</td>
+                <td>
+                <a href="{{ route('order.show', $purchase->id) }}" class="btn btn-info btn-sm mb-2">Detail</a>
+
+                @if($purchase->status == 'dipesan')
+                    <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#acceptModal{{ $purchase->id }}">
+                        Terima
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{ $purchase->id }}">
+                        Tolak
+                    </button>
+                    @elseif($purchase->status == 'diterima')
+                    <form action="{{ route('order.process', $purchase->id) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <button type="submit" class="btn btn-primary btn-sm mb-2">Proses</button>
+                    </form>
+                    @elseif($purchase->status == 'diproses')
+                    <form action="{{ route('order.complete', $purchase->id) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <button type="submit" class="btn btn-info btn-sm mb-2">Selesai</button>
+                    </form>
+                    @endif
+
+                    <div class="modal fade" id="acceptModal{{ $purchase->id }}" tabindex="-1" aria-labelledby="acceptModalLabel{{ $purchase->id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="acceptModalLabel{{ $purchase->id }}">Konfirmasi Terima Pesanan</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah Anda yakin ingin menerima pesanan ini?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <form action="{{ route('order.accept', $purchase->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-success">Terima</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="rejectModal{{ $purchase->id }}" tabindex="-1" aria-labelledby="rejectModalLabel{{ $purchase->id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="rejectModalLabel{{ $purchase->id }}">Konfirmasi Tolak Pesanan</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah Anda yakin ingin menolak pesanan ini?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <form action="{{ route('order.reject', $purchase->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-danger">Tolak</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+@endsection
