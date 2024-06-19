@@ -18,6 +18,7 @@
             <option value="all">Semua</option>
             <option value="dipesan">Dipesan</option>
             <option value="diproses">Diproses</option>
+            <option value="ditolak">Ditolak</option>
             <option value="selesai">Selesai</option>
         </select>
     </div>
