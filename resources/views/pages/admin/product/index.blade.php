@@ -11,9 +11,21 @@
         {{ session('success') }}
     </div>
     @endif
+
     <a href="{{ route('product.create') }}" class="btn btn-primary mb-3">Tambah Produk</a>
+
+    <div class="mb-3">
+      <label for="filter-category" class="form-label">Kategori Produk</label>
+      <select id="filter-category" class="form-select" onchange="filterProducts()">
+          <option value="all">Semua</option>
+          <option value="Smartphone">Smartphone</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Tablet">Tablet</option>
+      </select>
+  </div>
+
     <div class="table-responsive">
-      <table class="table table-bordered">
+      <table id ="products-table" class="table table-bordered">
           <thead>
               <tr>
                   <th>ID</th>
@@ -28,7 +40,7 @@
           </thead>
           <tbody>
               @foreach($products as $product)
-              <tr>
+              <tr class ="product-row" data-category=" {{ $product->category }}">
                   <td>{{ $product->id }}</td>
                   <td>{{ $product->name }}</td>
                   <td>{{ $product->category }}</td>
@@ -72,4 +84,19 @@
       </table>
     </div>
   </div>
+
+  <script>
+  function filterProducts() {
+      var category = document.getElementById('filter-category').value;
+      var rows = document.querySelectorAll('#products-table .product-row');
+      
+      rows.forEach(function(row) {
+          if (category === 'all' || row.getAttribute('data-category').trim() === category) {
+              row.style.display = '';
+          } else {
+              row.style.display = 'none';
+          }
+      });
+  }
+  </script>
 @endsection
