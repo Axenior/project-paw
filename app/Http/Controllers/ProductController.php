@@ -59,7 +59,7 @@ class ProductController extends Controller
             'warranty' => 'required|string|max:255',
             'memory' => 'required|string|max:255',
             'price' => 'required|integer|min:100000',
-            'discount' => 'nullable|integer|min:0|max:100',
+            'discount' => 'required|integer|min:0|max:100',
         ]);
 
         // upload foto
@@ -106,7 +106,7 @@ class ProductController extends Controller
             'warranty' => 'required|string|max:255',
             'memory' => 'required|string|max:255',
             'price' => 'required|integer|min:100000',
-            'discount' => 'nullable|integer|min:0|max:100',
+            'discount' => 'required|integer|min:0|max:100',
         ]);
 
         if ($request->hasFile('image')) {

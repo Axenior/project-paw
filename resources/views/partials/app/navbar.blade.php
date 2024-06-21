@@ -2,7 +2,7 @@
   <div class="container">
     <a class="navbar-brand text-white" href="/homepage">
       <i class="bi bi-cart4 fs-5"></i>
-      <span class="fs-6">TOKO ONLEN</span>
+      <span class="fs-6">GadgetKu</span>
     </a>
     <div class="" id="navbarSupportedContent">
       <ul class="navbar-nav">
